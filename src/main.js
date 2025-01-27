@@ -50,7 +50,18 @@ async function onSearch(event) {
     }
 
     renderGallery(data.hits);
-    lightbox.refresh();
+
+    if (!lightbox) {
+      lightbox = new SimpleLightbox('.gallery a', {
+        captions: true,
+        captionsData: 'alt',
+        captionDelay: 250,
+      });
+      console.log('Lightbox initialized');
+    } else {
+      console.log('Refreshing Lightbox');
+      lightbox.refresh();
+    }
 
     if (currentPage * perPage >= data.totalHits) {
       showInfo("We're sorry, but you've reached the end of search results.");
