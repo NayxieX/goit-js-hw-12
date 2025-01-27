@@ -12,6 +12,7 @@ const loadMore = document.querySelector('.load-more');
 let currentPage = 1;
 let currentQuery = '';
 const perPage = 15;
+
 let lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
   captionsData: 'alt',
@@ -74,7 +75,6 @@ async function onLoadMore() {
 
     renderGallery(data.hits);
     lightbox.refresh();
-
     if (currentPage * perPage >= data.totalHits) {
       showInfo("We're sorry, but you've reached the end of search results.");
     } else {
