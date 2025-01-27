@@ -57,9 +57,7 @@ async function onSearch(event) {
         captionsData: 'alt',
         captionDelay: 250,
       });
-      console.log('Lightbox initialized');
     } else {
-      console.log('Refreshing Lightbox');
       lightbox.refresh();
     }
 
