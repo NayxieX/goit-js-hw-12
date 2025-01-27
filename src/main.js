@@ -12,11 +12,6 @@ const loadMore = document.querySelector('.load-more');
 let currentPage = 1;
 let currentQuery = '';
 const perPage = 15;
-let lightbox = new SimpleLightbox('.gallery a', {
-  captions: true,
-  captionsData: 'alt',
-  captionDelay: 250,
-});
 
 form.addEventListener('submit', onSearch);
 loadMore.addEventListener('click', onLoadMore);
@@ -49,7 +44,6 @@ async function onSearch(event) {
     }
 
     renderGallery(data.hits);
-    lightbox.refresh();
 
     if (currentPage * perPage >= data.totalHits) {
       showInfo("We're sorry, but you've reached the end of search results.");
@@ -73,7 +67,6 @@ async function onLoadMore() {
     const { data } = await fetchImages(currentQuery, currentPage, perPage);
 
     renderGallery(data.hits);
-    lightbox.refresh();
 
     if (currentPage * perPage >= data.totalHits) {
       showInfo("We're sorry, but you've reached the end of search results.");
